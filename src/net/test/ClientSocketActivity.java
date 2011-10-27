@@ -102,20 +102,30 @@ public class ClientSocketActivity extends Activity implements OnClickListener
 		switch (view.getId())
 		{
 			case R.id.up:
-				message = "BT1011"; 
-				buf = convert(message);
+				//message = "BT1011"; 
+				//buf = convert(message);
+				buf = new  byte[8];
+				buf[0] = (byte) 0x42;
+				buf[1] = (byte) 0x54;
+				buf[2] = (byte) 0x31;
+				buf[3] = (byte) 0x30;
+				buf[4] = (byte) 0x31;
+				buf[5] = (byte) 0x31;
+				buf[6] = (byte) 0x0D;
+				buf[7] = (byte) 0x0A;
+
 				mService.write(buf);
-				textview.setText(message);
+				//textview.setText(buf);
 				break;
 			case R.id.down:
-				message = "BT1011"; 
+				message = "BT1021"; 
 				buf = convert(message);
 				mService.write(buf);
 				textview.setText(message);
 				break;
 			case R.id.stop:
-				message = "BT1011"; 
-				buf = message.getBytes();
+				message = "BT1020"; 
+				buf = convert(message);
 				mService.write(buf);
 				textview.setText(message);
 				break;
@@ -132,16 +142,16 @@ public class ClientSocketActivity extends Activity implements OnClickListener
 	
 	public byte[] convert(String msg)
 	{
-		byte[] send = new byte[msg.length() + 2];
-        byte[] theByteArray = msg.getBytes();
+		byte[] send = new byte[8];
+       byte[] theByteArray = msg.getBytes();
         
-		for (int i=0; i<theByteArray.length; i++)
+		for (int i=0; i<6; i++)
 		{
 			send[i] = theByteArray[i];
 		}	
 		
-		send[theByteArray.length] = Byte.decode("0xd");
-		send[theByteArray.length+1] = Byte.decode("0xa");
+		send[6] = (byte) 0x0D;
+		send[7] = (byte) 0x0A;
 
 		return send;
 	}
