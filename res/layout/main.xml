@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <Button android:id="@+id/btnOpenBluetooth" 
+    	android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:text="打開藍牙"/>
+	<Button android:id="@+id/btnCloseBluetooth"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="關閉藍牙"/>
+	<Button android:id="@+id/btnSearchBluetooth"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:text="搜索藍牙"/>
+	<Button android:id="@+id/btnClientSocket"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:text="開啟控制" />
+
+</LinearLayout>
