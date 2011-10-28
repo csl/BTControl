@@ -29,6 +29,11 @@ public class main extends Activity implements OnClickListener{
 			case R.id.btnClientSocket:
 				Intent clientSocketIntent = new Intent(this, ClientSocketActivity.class);
 				startActivity(clientSocketIntent);
+				break;
+			case R.id.exit:
+				bluetoothAdapter.disable();
+				finish();
+				break;
 		}
 		
 	}
@@ -38,14 +43,21 @@ public class main extends Activity implements OnClickListener{
         setContentView(R.layout.main);
         
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.main);
+
+		bluetoothAdapter.disable();
+        
 		Button btnOpenBluetooth = (Button) findViewById(R.id.btnOpenBluetooth);
 		Button btnCloseBluetooth = (Button) findViewById(R.id.btnCloseBluetooth);
 		Button btnSearchBluetooth = (Button) findViewById(R.id.btnSearchBluetooth);
 		Button btnClientSocket = (Button) findViewById(R.id.btnClientSocket);
+		Button exit = (Button) findViewById(R.id.exit);
 		btnOpenBluetooth.setOnClickListener(this);
 		btnCloseBluetooth.setOnClickListener(this);
 		btnSearchBluetooth.setOnClickListener(this);
 		btnClientSocket.setOnClickListener(this);
+		exit.setOnClickListener(this);
+
     }
 }

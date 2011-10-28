@@ -102,20 +102,10 @@ public class ClientSocketActivity extends Activity implements OnClickListener
 		switch (view.getId())
 		{
 			case R.id.up:
-				//message = "BT1011"; 
-				//buf = convert(message);
-				buf = new  byte[8];
-				buf[0] = (byte) 0x42;
-				buf[1] = (byte) 0x54;
-				buf[2] = (byte) 0x31;
-				buf[3] = (byte) 0x30;
-				buf[4] = (byte) 0x31;
-				buf[5] = (byte) 0x31;
-				buf[6] = (byte) 0x0D;
-				buf[7] = (byte) 0x0A;
-
+				message = "BT1011"; 
+				buf = convert(message);
 				mService.write(buf);
-				//textview.setText(buf);
+				textview.setText(message);
 				break;
 			case R.id.down:
 				message = "BT1021"; 
@@ -128,6 +118,12 @@ public class ClientSocketActivity extends Activity implements OnClickListener
 				buf = convert(message);
 				mService.write(buf);
 				textview.setText(message);
+
+				message = "BT1010"; 
+				buf = convert(message);
+				mService.write(buf);
+				textview.setText(message);
+				
 				break;
 		}
 	}
@@ -184,5 +180,5 @@ public class ClientSocketActivity extends Activity implements OnClickListener
 		// 跳轉到搜索的藍牙設備列表區進行選擇
 		Intent intent = new Intent(this, DiscoveryActivity.class);
 		startActivityForResult(intent, 0x1);
-	}
+	}	
 }
